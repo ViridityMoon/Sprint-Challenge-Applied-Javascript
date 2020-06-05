@@ -36,7 +36,7 @@ function tabAxiosCall(){
       })
       .finally(() => {
           console.log('done')
-      })
+      }, [])
 }
 
 tabAxiosCall();
