@@ -9,14 +9,14 @@
 //    <div class="tab">topic here</div>
 
 const tabHolder = document.querySelector('.topics');
-function tabMaker(){
+function tabMaker(topic){
     const tab = document.createElement('div');
-
     tab.classList.add('tab');
+    tab.textContent = topic;
     console.log(tab);
     return tab
 }
-tabMaker()
+// tabMaker()
 
 function tabAxiosCall(){
     const thePromise = axios.get('https://lambda-times-backend.herokuapp.com/topics')
@@ -25,8 +25,8 @@ function tabAxiosCall(){
         console.log(response.data.topics);
         const data = response.data.topics;
         
-        data.forEach(function (){
-            const tabCard = tabMaker()
+        data.forEach(function (topic){
+            const tabCard = tabMaker(topic);
             tabHolder.appendChild(tabCard);
         })
         
@@ -38,3 +38,5 @@ function tabAxiosCall(){
           console.log('done')
       })
 }
+
+tabAxiosCall();
